@@ -1,3 +1,3 @@
 # Build the Game to have hand-on practise on JavaScript.
-#Author : 
+Author : 
 VRUSHABH PAWAR.
