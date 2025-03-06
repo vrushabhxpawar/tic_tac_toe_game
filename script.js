@@ -10,10 +10,10 @@ const winPattern = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (turnX) {
-      btn.innerText = "X";
+      btn.innerHTML = `<p style = "color : #2D336B">X</P`;
       turnX = false;
     } else {
-      btn.innerText = "O";
+      btn.innerHTML = `<p style = "color : #DCD7C9">O</P`;
       turnX = true;
     }
     btn.disabled = true;
@@ -46,21 +46,25 @@ function showWinner(winner) {
 
 reset.addEventListener("click", () => {
   turnX = true;
+  p.innerText = "";
   msg.classList.add("hide");
   for (btn of btns) {
     btn.disabled = false;
     btn.innerText = "";
-    p.innerText = "";
   }
 })
 
 newGame.addEventListener("click", () => {
   turnX = true;
+  p.innerText = "";
   msg.classList.add("hide");
   reset.classList.remove("hide");
   for (btn of btns) {
     btn.disabled = false;
     btn.innerText = "";
-    p.innerText = "";
   }
 })
+
+function draw (){
+  p.innerText = ` Game draw !!.`
+}
