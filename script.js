@@ -35,7 +35,6 @@ function check() {
       }
     }
   }
-
 }
 
 function showWinner(winner) {
@@ -65,6 +64,6 @@ newGame.addEventListener("click", () => {
   }
 })
 
-function draw (){
+function draw() {
   p.innerText = ` Game draw !!.`
 }
