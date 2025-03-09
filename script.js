@@ -4,11 +4,14 @@ let newGame = document.querySelector(".newGame");
 let p = document.querySelector(".newMsg")
 let msg = document.querySelector("#msg");
 let turnX = true;
+let clickCount = 0;
 const winPattern = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
 
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
+    clickCount ++;
+    console.log(clickCount);
     if (turnX) {
       btn.innerHTML = `<p style = "color : #2D336B">X</P`;
       turnX = false;
@@ -32,6 +35,11 @@ function check() {
           btn.disabled = true;
         }
         showWinner(pos1);
+      } else{
+        if( clickCount === 9){
+         
+          draw();
+        }
       }
     }
   }
@@ -44,26 +52,27 @@ function showWinner(winner) {
 }
 
 reset.addEventListener("click", () => {
-  turnX = true;
-  p.innerText = "";
-  msg.classList.add("hide");
-  for (btn of btns) {
-    btn.disabled = false;
-    btn.innerText = "";
-  }
+ common();
 })
 
 newGame.addEventListener("click", () => {
+ common();
+})
+
+function draw() {
+  p.innerText = "Draw";
+  msg.classList.remove("hide");
+  reset.classList.add("hide");
+}
+
+function common () {
   turnX = true;
   p.innerText = "";
+  clickCount = 0;
   msg.classList.add("hide");
   reset.classList.remove("hide");
   for (btn of btns) {
     btn.disabled = false;
     btn.innerText = "";
   }
-})
-
-function draw() {
-  p.innerText = ` Game draw !!.`
 }
