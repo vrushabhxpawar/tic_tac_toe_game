@@ -10,8 +10,7 @@ const winPattern = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5
 
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    clickCount ++;
-    console.log(clickCount);
+    clickCount++;
     if (turnX) {
       btn.innerHTML = `<p style = "color : #2D336B">X</P`;
       turnX = false;
@@ -29,15 +28,15 @@ function check() {
     let pos1 = btns[pattern[0]].innerText;
     let pos2 = btns[pattern[1]].innerText;
     let pos3 = btns[pattern[2]].innerText;
+    
     if (pos1 != "" && pos2 != "" && pos3 != "") {
       if (pos1 === pos2 && pos2 === pos3) {
         for (btn of btns) {
           btn.disabled = true;
         }
         showWinner(pos1);
-      } else{
-        if( clickCount === 9){
-         
+      } else {
+        if (clickCount === 9) {
           draw();
         }
       }
@@ -52,20 +51,20 @@ function showWinner(winner) {
 }
 
 reset.addEventListener("click", () => {
- common();
+  restart();
 })
 
 newGame.addEventListener("click", () => {
- common();
+  restart();
 })
 
 function draw() {
-  p.innerText = "Draw";
+  p.innerText = "Your game is draw";
   msg.classList.remove("hide");
   reset.classList.add("hide");
 }
 
-function common () {
+function restart() {
   turnX = true;
   p.innerText = "";
   clickCount = 0;
